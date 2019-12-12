@@ -9,17 +9,38 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from MainWin import Ui_MainWin
 from LogonWin import Ui_LogonWin
 
-class MyMainWin(Ui_MainWin):
-    pass
+class MyMainWin(QtWidgets.QWidget,Ui_MainWin):
+    def __init__(self):
+        super(MyMainWin, self).__init__()
+        self.setupUi(self)
+        self.pushButton.clicked.connect(self.OnClick_Start)
 
-class MyLogonWin(Ui_LogonWin):
-    pass
+    def OnClick_Start(self):
+        self.close()
+
+
+class MyLogonWin(QtWidgets.QWidget,Ui_LogonWin):
+    def __init__(self):
+        super(MyLogonWin, self).__init__()
+        self.setupUi(self)
+        self.pushButton_logON.clicked.connect(self.OnClick_Logon)
+
+    def OnClick_Logon(self):
+        if self.lineEdit_username.text() =="mingri":
+            if self.lineEdit_password.text() =="666666":
+                self.close()
+            else:
+                self.lineEdit_password.setText("密码错误")
+        else:
+            self.lineEdit_username.setText("请输入正确的用户名")
+
+
+
+
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
     ui = MyLogonWin()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    ui.show()
     sys.exit(app.exec_())
