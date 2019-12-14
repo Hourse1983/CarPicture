@@ -39,7 +39,7 @@ class Ui_MainWin(object):
         self.gridLayoutWidget = QtWidgets.QWidget(self.scrollAreaWidgetContents_2)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 0, 801, 601))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
