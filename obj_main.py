@@ -4,6 +4,7 @@
 import os
 import sys
 
+from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
@@ -22,8 +23,11 @@ class MyMainWin(QtWidgets.QWidget,Ui_MainWin):
         self.pushButton.clicked.connect(self.OnClick_Start)
 
     def OnClick_Start(self):
+        #关闭爬虫按键
         self.pushButton.setVisible(False)
+        #建立爬虫类对象
         ui = ReTbmm()
+        #调用爬虫类函数爬取数据
         ui.Retbmm()
         self.pushButton.setVisible(True)
         self.path =self.cdir + '/mrsoft'
@@ -74,10 +78,13 @@ class MyMainWin(QtWidgets.QWidget,Ui_MainWin):
             self.scrollAreaWidgetContents_2.setMinimumWidth(800)
             self.scrollAreaWidgetContents_2.setMinimumHeight(i*200)
 
-    def wichbtn(self):
+
+    def wichbtn(self,tppath):
+        #增加功能
          sender = self.gridLayout.sender()
-        # img = Image.open(tppath + sender.text())
-        # img.show
+         img = Image.open(tppath + sender.text())
+         img.show()
+
 
 
 
