@@ -75,8 +75,7 @@ class MyMainWin(QtWidgets.QWidget,Ui_MainWin):
             self.scrollAreaWidgetContents_2.setMinimumHeight(i*200)
 
     def wichbtn(self):
-        pass
-        # sender = self.gridLayout.sender()
+         sender = self.gridLayout.sender()
         # img = Image.open(tppath + sender.text())
         # img.show
 
