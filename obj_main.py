@@ -78,16 +78,11 @@ class MyMainWin(QtWidgets.QWidget,Ui_MainWin):
             self.scrollAreaWidgetContents_2.setMinimumWidth(800)
             self.scrollAreaWidgetContents_2.setMinimumHeight(i*200)
 
-
     def wichbtn(self,tppath):
         #增加功能
          sender = self.gridLayout.sender()
          img = Image.open(tppath + sender.text())
          img.show()
-
-
-
-
 
 class MyLogonWin(QtWidgets.QWidget,Ui_LogonWin):
     def __init__(self):
@@ -98,15 +93,15 @@ class MyLogonWin(QtWidgets.QWidget,Ui_LogonWin):
     def OnClick_Logon(self):
         if self.lineEdit_username.text() =="mingri":
             if self.lineEdit_password.text() =="666666":
-                self.close()
+                uiMain.show()
             else:
                 self.lineEdit_password.setText("密码错误")
         else:
             self.lineEdit_username.setText("请输入正确的用户名")
 
-
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    ui = MyMainWin()
-    ui.show()
+    uiMain = MyMainWin()
+    uiLogon = MyLogonWin()
+    uiLogon.show()
     sys.exit(app.exec_())
