@@ -30,16 +30,20 @@ class MyMainWin(QtWidgets.QWidget,Ui_MainWin):
         #调用爬虫类函数爬取数据
         ui.Retbmm()
         self.pushButton.setVisible(True)
+        #获取路径
         self.path =self.cdir + '/mrsoft'
         dirs = os.listdir(self.path)
         #循环文件名称
         for dir in dirs:
             #添加文件名称到树形结构
             QTreeWidgetItem(self.root).setText(0,dir)
+        #点击treeeWidget 发生事件
         self.treeWidget.clicked.connect(self.onTreeClicked)
 
     def onTreeClicked(self,Qmodelidx):
+        #获取树形结构
         items = self.treeWidget.currentItem()
+        #判断点击的节点
         if items.text(0) == 'V8 Vantage 2018':
             self.root.takeChildren()
             self.path = self.cdir + '/mrsoft'
@@ -93,11 +97,19 @@ class MyLogonWin(QtWidgets.QWidget,Ui_LogonWin):
     def OnClick_Logon(self):
         if self.lineEdit_username.text() =="mingri":
             if self.lineEdit_password.text() =="666666":
+                uiLogon.close()
                 uiMain.show()
             else:
-                self.lineEdit_password.setText("密码错误")
+                self.message("密码错误")
         else:
-            self.lineEdit_username.setText("请输入正确的用户名")
+            #self.lineEdit_username.setText("请输入正确的用户名")
+            self.message("用户名错误")
+
+    def message(self,str):
+        repy = QMessageBox.information(self, "标题",str)
+
+
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
